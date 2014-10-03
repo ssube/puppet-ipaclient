@@ -38,6 +38,9 @@ class ipaclient::sudoers (
         if ($::operatingsystem == "Fedora" and versioncmp($::operatingsystemrelease, '20') >= 0) {
             # not needed on F20+
             $libsss_sudo_package = []
+        } else if ($::operatingsystem == "CentOS" and versioncmp($::operatingsystemmajrelease, '7') >= 0) {
+            # not needed on CentOS 7+
+            $libsss_sudo_package = []
         } else {
             $libsss_sudo_package = 'libsss_sudo'
         }
